@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+
+//Material UI Imports
+import TextField from '@material-ui/core/TextField';
 
 class RegisterPage extends Component {
+  //state contains all necessary input fields
   state = {
     username: '',
     password: '',
@@ -19,7 +23,7 @@ class RegisterPage extends Component {
         },
       });
     } else {
-      this.props.dispatch({type: 'REGISTRATION_INPUT_ERROR'});
+      this.props.dispatch({ type: 'REGISTRATION_INPUT_ERROR' });
     }
   } // end registerUser
 
@@ -44,24 +48,44 @@ class RegisterPage extends Component {
           <h1>Register User</h1>
           <div>
             <label htmlFor="username">
-              Username:
-              <input
+              {/* Username: */}
+              {/* <input
                 type="text"
                 name="username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
+              /> */}
+
+              <TextField
+                required
+                id="username"
+                label="username"
+                margin="normal"
+                value={this.state.username}
+                onChange={this.handleInputChangeFor('username')}
               />
+
             </label>
           </div>
           <div>
             <label htmlFor="password">
-              Password:
+              {/* Password:
               <input
                 type="password"
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
+              /> */}
+
+              <TextField
+                required
+                id="password"
+                label="password"
+                margin="normal"
+                value={this.state.password}
+                onChange={this.handleInputChangeFor('password')}
               />
+
             </label>
           </div>
           <div>
@@ -77,7 +101,7 @@ class RegisterPage extends Component {
           <button
             type="button"
             className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
+            onClick={() => { this.props.dispatch({ type: 'SET_TO_LOGIN_MODE' }) }}
           >
             Login
           </button>

@@ -21,7 +21,7 @@ router.post('/register', (req, res, next) => {
 
   const queryText = 'INSERT INTO "user" (username, password) VALUES ($1, $2) RETURNING id';
   pool.query(queryText, [username, password])
-    .then(() => res.sendStatus(201))
+    .then(() => res.sendStatus(201)) //MEG TO DO: add another query to insert into contact info table
     .catch(() => res.sendStatus(500));
 });
 
