@@ -18,10 +18,24 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/register', (req, res, next) => {  
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
+  const name = req.body.name;
+  const phoneNumber = req.body.phoneNumber;
+  const email = req.body.email;
+  const roles = req.body.roles;
+  const addressLine1 = req.body.addressLine1;
+  const addressLine2 = req.body.addressLine2;
+  const city = req.body.city;
+  const state = req.body.state;
+  const zipCode = req.body.zipCode;
 
+  // Query to send info to user database
   const queryText = 'INSERT INTO "user" (username, password) VALUES ($1, $2) RETURNING id';
+  // Query to send info to contact info database
+  const queryText2 = 'INSERT INTO "contact info" (name, phoneNumber, email, roles, addressLine1, addressLine2, city, state, zipCode) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)';
   pool.query(queryText, [username, password])
-    .then(() => res.sendStatus(201)) //MEG TO DO: add another query to insert into contact info table
+    .then(() =>
+      pool.query(queryText2, [name, phoneNumber, email, roles, addressLine1, addressLine2, city, state, zipCode]) // LEFT OFF HERE!!!!!!!
+    //) => res.sendStatus(201)) //MEG TO DO: add another query to insert into contact info table
     .catch(() => res.sendStatus(500));
 });
 

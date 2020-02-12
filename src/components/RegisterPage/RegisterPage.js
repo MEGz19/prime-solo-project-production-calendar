@@ -141,7 +141,7 @@ class RegisterPage extends Component {
               <TextField
                 required
                 id="standard-required"
-                label="roles"
+                label="role(s)"
                 margin="dense"
                 value={this.state.roles}
                 onChange={this.handleInputChangeFor('roles')}
@@ -151,8 +151,7 @@ class RegisterPage extends Component {
           <div>
             <label htmlFor="addressLine1">
               <TextField
-                required
-                id="standard-required"
+                id="standard-name"
                 label="address line 1"
                 margin="dense"
                 value={this.state.addressLine1}
@@ -163,8 +162,7 @@ class RegisterPage extends Component {
           <div>
             <label htmlFor="addressLine2">
               <TextField
-                required
-                id="standard-required"
+                id="standard-name"
                 label="address line 2"
                 margin="dense"
                 value={this.state.addressLine2}
@@ -175,8 +173,7 @@ class RegisterPage extends Component {
           <div>
             <label htmlFor="city">
               <TextField
-                required
-                id="standard-required"
+                id="standard-name"
                 label="city"
                 margin="dense"
                 value={this.state.city}
@@ -187,8 +184,7 @@ class RegisterPage extends Component {
           <div>
             <label htmlFor="state">
               <TextField
-                required
-                id="standard-required"
+                id="standard-name"
                 label="state"
                 margin="dense"
                 value={this.state.state}
@@ -199,8 +195,7 @@ class RegisterPage extends Component {
           <div>
             <label htmlFor="zipCode">
               <TextField
-                required
-                id="standard-required"
+                id="standard-name"
                 label="zip code"
                 margin="dense"
                 value={this.state.zipCode}
