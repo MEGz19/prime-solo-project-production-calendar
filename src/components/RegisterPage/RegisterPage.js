@@ -60,7 +60,7 @@ class RegisterPage extends Component {
                 required
                 id="username"
                 label="username"
-                margin="normal"
+                margin="dense"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
@@ -81,7 +81,7 @@ class RegisterPage extends Component {
                 required
                 id="password"
                 label="password"
-                margin="normal"
+                margin="dense"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
