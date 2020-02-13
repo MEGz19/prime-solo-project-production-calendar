@@ -30,7 +30,7 @@ router.post('/register', (req, res, next) => {
 
   // Query to send info to user database
   const queryText = 'INSERT INTO "user" ("username", "password") VALUES ($1, $2) RETURNING id';
-  // Query to send info to contact info database
+  // Query to send info to contact_info database
   const queryText2 = 'INSERT INTO "contact_info" ("name", "phoneNumber", "email", "roles", "addressLine1", "addressLine2", city, state, "zipCode", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)';
   pool.query(queryText, [username, password])
     .then((result) => {
