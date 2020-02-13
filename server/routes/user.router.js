@@ -29,14 +29,18 @@ router.post('/register', (req, res, next) => {
   const zipCode = req.body.zipCode;
 
   // Query to send info to user database
-  const queryText = 'INSERT INTO "user" (username, password) VALUES ($1, $2) RETURNING id';
+  const queryText = 'INSERT INTO "user" ("username", "password") VALUES ($1, $2) RETURNING id';
   // Query to send info to contact info database
-  const queryText2 = 'INSERT INTO "contact info" (name, phoneNumber, email, roles, addressLine1, addressLine2, city, state, zipCode) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)';
+  const queryText2 = 'INSERT INTO "contact_info" ("name", "phoneNumber", "email", "roles", "addressLine1", "addressLine2", city, state, "zipCode", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)';
   pool.query(queryText, [username, password])
-    .then(() =>
-      pool.query(queryText2, [name, phoneNumber, email, roles, addressLine1, addressLine2, city, state, zipCode]) // LEFT OFF HERE!!!!!!!
-    //) => res.sendStatus(201)) //MEG TO DO: add another query to insert into contact info table
-    .catch(() => res.sendStatus(500));
+    .then((result) => {
+      console.log(result)
+      pool.query(queryText2, [name, phoneNumber, email, roles, addressLine1, addressLine2, city, state, zipCode, result.rows[0].id])}) 
+      .then(() => res.sendStatus(201))
+    .catch((err) => {
+      console.log(err)
+      res.sendStatus(500)
+    });
 });
 
 // Handles login form authenticate/login POST
