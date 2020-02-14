@@ -18,11 +18,29 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/register', (req, res, next) => {  
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
+  const name = req.body.name;
+  const phoneNumber = req.body.phoneNumber;
+  const email = req.body.email;
+  const roles = req.body.roles;
+  const addressLine1 = req.body.addressLine1;
+  const addressLine2 = req.body.addressLine2;
+  const city = req.body.city;
+  const state = req.body.state;
+  const zipCode = req.body.zipCode;
 
-  const queryText = 'INSERT INTO "user" (username, password) VALUES ($1, $2) RETURNING id';
+  // Query to send info to user database
+  const queryText = 'INSERT INTO "user" ("username", "password") VALUES ($1, $2) RETURNING id';
+  // Query to send info to contact_info database
+  const queryText2 = 'INSERT INTO "contact_info" ("name", "phoneNumber", "email", "roles", "addressLine1", "addressLine2", city, state, "zipCode", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)';
   pool.query(queryText, [username, password])
-    .then(() => res.sendStatus(201)) //MEG TO DO: add another query to insert into contact info table
-    .catch(() => res.sendStatus(500));
+    .then((result) => {
+      console.log(result)
+      pool.query(queryText2, [name, phoneNumber, email, roles, addressLine1, addressLine2, city, state, zipCode, result.rows[0].id])}) 
+      .then(() => res.sendStatus(201))
+    .catch((err) => {
+      console.log(err)
+      res.sendStatus(500)
+    });
 });
 
 // Handles login form authenticate/login POST
