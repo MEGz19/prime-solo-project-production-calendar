@@ -40,16 +40,19 @@ class SchedulePage extends Component {
                     <h1>Schedule Page</h1>
                     <p>The rehearsal period for <i>Wicked</i> will be from May 1 to May 28, 2020. Performances will be from May 29 through May 14, 2020. Please enter any conflicts, or times you are <b>NOT</b> available during this time frame.</p>
                 </div>
-                <div>
                 {/* DATE INPUT  */}
+                <div>
+                    <label>Date:</label>
                     <input type="date" id="date" name="date" label="date" />
                 </div>
                 {/* START TIME INPUT  */}
                 <div>
+                    <label>Start Time:</label>
                     <input type="time" id="startTime" name="startTime" />
                 </div>
-                 {/* END TIME INPUT  */}
-                 <div>
+                {/* END TIME INPUT  */}
+                <div>
+                    <label>End Time:</label>
                     <input type="time" id="endTime" name="endTime" />
                 </div>
                 {/* ADD CONFLICT BUTTON */}
