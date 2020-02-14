@@ -29,6 +29,10 @@ class SchedulePage extends Component {
     //     });
     // }; //END REACT DATEPICKER
 
+    onClick = () => {
+        console.log('clicked add connflict button');
+    }
+
     render() {
         return (
             <div>
@@ -47,6 +51,10 @@ class SchedulePage extends Component {
                  {/* END TIME INPUT  */}
                  <div>
                     <input type="time" id="endTime" name="endTime" />
+                </div>
+                {/* ADD CONFLICT BUTTON */}
+                <div>
+                    <button onClick={this.onClick}>Add Conflict</button>
                 </div>
 
 
