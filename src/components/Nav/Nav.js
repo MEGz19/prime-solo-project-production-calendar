@@ -29,6 +29,14 @@ const Nav = (props) => (
       <Link className="nav-link" to="/about">
         About
       </Link>
+      {/* Show the link to the schedule page if the user is logged in */}
+      {props.user.id && (
+        <>
+          <Link className="nav-link" to="/schedule">
+            Schedule Page
+          </Link>
+        </>
+      )}
     </div>
   </div>
 );
