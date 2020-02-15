@@ -21,16 +21,22 @@ class SchedulePage extends Component {
     // state = {
     //     startDate: new Date()
     // };
-
-
     // handleChange = date => {
     //     this.setState({
     //         startDate: date
     //     });
     // }; //END REACT DATEPICKER
 
+    // Set up Local State
+    state = {
+        date: '',
+        startTime: '',
+        endTime: '',
+        description: '',
+    }
+
     onClick = () => {
-        console.log('clicked add connflict button');
+        console.log('clicked add conflict button');
     }
 
     render() {
@@ -54,6 +60,11 @@ class SchedulePage extends Component {
                 <div>
                     <label>End Time:</label>
                     <input type="time" id="endTime" name="endTime" />
+                </div>
+                {/* DESCRIPTION TEXT BOX */}
+                <div>
+                    <label>Description:</label>
+                    <textarea placeholder="Anything we should know?"></textarea>
                 </div>
                 {/* ADD CONFLICT BUTTON */}
                 <div>
