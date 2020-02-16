@@ -44,9 +44,14 @@ class SchedulePage extends Component {
         })
     }
     
-    // Dispatches local state to a saga
+    // Dispatches local state to a saga on click of Add Conflict Button
     handleClick = () => {
         console.log('clicked add conflict button');
+        // start the GET route for conflicts
+        this.props.dispatch({
+            type: 'GET_CONFLICT_BY_ID',
+            // payload: this.props.???????????????
+        })
     }
 
     render() {
