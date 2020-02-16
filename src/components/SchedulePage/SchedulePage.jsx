@@ -29,28 +29,33 @@ class SchedulePage extends Component {
 
     // Set up Local State
     state = {
-        date: '',
-        startTime: '',
-        endTime: '',
-        description: '',
+        newConflict: {
+            date: '',
+            startTime: '',
+            endTime: '',
+            description: ''
+        }
     }
 
     // Update the local state as user inputs data
     handleChange = (event, propName) => {
         this.setState({
-            //Spreading state, so that we can target each value by name instead of the whole state
-            ...this.state, 
-            [propName]:event.target.value
+            newConflict: {
+                //Spreading state, so that we can target each value by name instead of the whole state
+                ...this.state,
+                [propName]: event.target.value
+            }
+
         })
     }
-    
+
     // Dispatches local state to a saga on click of Add Conflict Button
     handleClick = () => {
         console.log('clicked add conflict button');
         // start the GET route for conflicts
         this.props.dispatch({
             type: 'GET_CONFLICT_BY_ID',
-            // payload: this.props.???????????????
+            payload: this.props.newConflict //SHOULD THIS BE THIS.PROPS OR THIS.STATE.VALUES...???
         })
     }
 
@@ -65,22 +70,22 @@ class SchedulePage extends Component {
                 {/* DATE INPUT  */}
                 <div>
                     <label>Date:</label>
-                    <input onChange={(event) => this.handleChange(event,'date')} type="date" id="date" name="date" />
+                    <input onChange={(event) => this.handleChange(event, 'date')} type="date" id="date" name="date" />
                 </div>
                 {/* START TIME INPUT  */}
                 <div>
                     <label>Start Time:</label>
-                    <input onChange={(event) => this.handleChange(event,'startTime')} type="time" id="startTime" name="startTime" />
+                    <input onChange={(event) => this.handleChange(event, 'startTime')} type="time" id="startTime" name="startTime" />
                 </div>
                 {/* END TIME INPUT  */}
                 <div>
                     <label>End Time:</label>
-                    <input onChange={(event) => this.handleChange(event,'endTime')} type="time" id="endTime" name="endTime" />
+                    <input onChange={(event) => this.handleChange(event, 'endTime')} type="time" id="endTime" name="endTime" />
                 </div>
                 {/* DESCRIPTION TEXT BOX */}
                 <div>
                     <label>Description:</label>
-                    <textarea onChange={(event) => this.handleChange(event,'description')} placeholder="Anything we should know?"></textarea>
+                    <textarea onChange={(event) => this.handleChange(event, 'description')} placeholder="Anything we should know?"></textarea>
                 </div>
                 {/* ADD CONFLICT BUTTON */}
                 <div>
