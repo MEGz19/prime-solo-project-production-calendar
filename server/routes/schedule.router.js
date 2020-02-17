@@ -2,14 +2,17 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
+
+//GET info from "conflicts" table in database
 router.get('/', (req, res) => {
-    
+    let queryText = `SELECT "conflicts".date, "conflicts".start_time, "conflicts".end_time, "conflicts".description
+        FROM "conflicts"
+        WHERE "conflicts".user_id = ;
+    `
+    res.send()
 });
 
-// POST to the database, "conflicts" table
+// POST to the database, conflicts table
 router.post('/', (req, res) => {
     console.log('test');
     
