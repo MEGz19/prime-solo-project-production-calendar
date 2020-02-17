@@ -42,7 +42,7 @@ class SchedulePage extends Component {
         this.setState({
             newConflict: {
                 //Spreading state, so that we can target each value by name instead of the whole state
-                ...this.state,
+                ...this.state.newConflict,
                 [propName]: event.target.value
             }
 
@@ -52,10 +52,10 @@ class SchedulePage extends Component {
     // Dispatches local state to a saga on click of Add Conflict Button
     handleClick = () => {
         console.log('clicked add conflict button');
-        // start the GET route for conflicts
+        // start the POST route for conflicts
         this.props.dispatch({
             type: 'ADD_CONFLICT_BY_ID',
-            payload: this.props.newConflict //SHOULD THIS BE THIS.PROPS OR THIS.STATE.VALUES...???
+            payload: this.state.newConflict 
         })
     }
 

@@ -12,13 +12,20 @@ import { put, takeLatest } from 'redux-saga/effects';
 // worker Saga: will be fired on "GET_CONFLICT_BY_ID" actions
 function* scheduleConflict(action) {
    console.log('adding conflict on POST', action.payload) 
+
+
    //add it
    try {
-    let response = yield axios.post('/api/schedule', action.payload)
+
+    const config = {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true,
+      };
+    let response = yield axios.post('/api/schedule', action.payload, config)
    //then do another GET
    yield put({type:'GET_CONFLICT'})
    } catch (err) {
-       alert('error in POST conflict')
+       alert('error in POST conflict', err)
    }
 }
 
