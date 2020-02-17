@@ -13,23 +13,14 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* scheduleConflict(action) {
    console.log('adding conflict on POST', action.payload) 
    //add it
-   let response = yield axios.post('/api/schedule', action.payload)
+   try {
+    let response = yield axios.post('/api/schedule', action.payload)
    //then do another GET
    yield put({type:'GET_CONFLICT'})
+   } catch (err) {
+       alert('error in POST conflict')
+   }
 }
-//     try {
-      
-//     } catch (error) {
-//         //NEED TO EDIT ERROR AND YIELD PUT MESSAGE
-//         // console.log('Error with user registration:', error);
-//         // yield put({type: 'REGISTRATION_FAILED'});
-//     }
-// }
-
-
-
-
-
 
 
 function* scheduleSaga() {
