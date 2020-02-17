@@ -54,7 +54,7 @@ class SchedulePage extends Component {
         console.log('clicked add conflict button');
         // start the GET route for conflicts
         this.props.dispatch({
-            type: 'GET_CONFLICT_BY_ID',
+            type: 'ADD_CONFLICT_BY_ID',
             payload: this.props.newConflict //SHOULD THIS BE THIS.PROPS OR THIS.STATE.VALUES...???
         })
     }
@@ -89,7 +89,7 @@ class SchedulePage extends Component {
                 </div>
                 {/* ADD CONFLICT BUTTON */}
                 <div>
-                    <button onClick={this.onClick}>Add Conflict</button>
+                    <button onClick={this.handleClick}>Add Conflict</button>
                 </div>
 
 
