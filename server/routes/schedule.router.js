@@ -7,22 +7,25 @@ const router = express.Router();
 router.get('/', (req, res) => {
     let queryText = `SELECT "conflicts".date, "conflicts".start_time, "conflicts".end_time, "conflicts".description
         FROM "conflicts"
-        WHERE "conflicts".user_id = ;
+        WHERE "conflicts".user_id = req.user.id
     `
-    res.send()
+    pool.query(queryText).then(result => {
+        res.send(result.rows)
+    }).catch(err => {
+        console.log('Error in server GET:', err);
+        res.sendStatus(500);
+    })
+
 });
 
 // POST to the database, conflicts table
 router.post('/', (req, res) => {
     console.log('test');
-    
     console.log(req.body);
     console.log(req.user);
-    
-    
     let id = [req.body.date, req.body.startTime, req.body.endTime, req.body.description, req.user.id]
     console.log(id);
-    
+
     let queryText = `
     INSERT INTO "conflicts" ("date", "start_time", "end_time", "description", "user_id") 
     VALUES ($1, $2, $3, $4, $5);

@@ -12,11 +12,8 @@ import { put, takeLatest } from 'redux-saga/effects';
 // worker Saga: will be fired on "GET_CONFLICT_BY_ID" actions
 function* scheduleConflict(action) {
    console.log('adding conflict on POST', action.payload) 
-
-
    //add it
    try {
-
     const config = {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
@@ -29,9 +26,19 @@ function* scheduleConflict(action) {
    }
 }
 
+//GET request
+function* getConflict(action) {
+  console.log('getting conflicts from the server')
+  //the yield is the .then(response) from original axios.get
+  let response = yield axios.get('/api/schedule');
+  //put is the same as dispatch and will dispatch to reducer
+  yield put ({type: 'SET_CONFLICT', payload: response.data})
+} //LEFT OFF HERE!!!
+
 
 function* scheduleSaga() {
     yield takeLatest('ADD_CONFLICT_BY_ID', scheduleConflict);
+    yield takeLatest('GET_CONFLICT', getConflict);
   }
 
 export default scheduleSaga;
