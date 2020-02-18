@@ -5,11 +5,13 @@ const router = express.Router();
 
 //GET info from "conflicts" table in database
 router.get('/', (req, res) => {
-    let queryText = `SELECT "conflicts".date, "conflicts".start_time, "conflicts".end_time, "conflicts".description
+    let id = [req.user.id]
+    let queryText = `SELECT "conflicts".date, "conflicts".start_time, "conflicts".end_time, "conflicts".description, "conflicts".user_id
         FROM "conflicts"
-        WHERE "conflicts".user_id = req.user.id
+        WHERE "conflicts".user_id = $1
     `
-    pool.query(queryText).then(result => {
+    // FIX THE WHERE PART OF ABOVE SQL QUERY
+    pool.query(queryText, id).then(result => {
         res.send(result.rows)
     }).catch(err => {
         console.log('Error in server GET:', err);
