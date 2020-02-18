@@ -75,15 +75,16 @@ class SchedulePage extends Component {
                 <div>
                     <button onClick={this.handleClick}>Add Conflict</button>
                 </div>
-                {/* RENDER CONFICTS FROM SCHEDULE REDUCER TO DOM */}
+                {/* RENDER CONFLICTS FROM SCHEDULE REDUCER TO DOM */}
                 <div>
-                    {/* <ul>
-                        {this.props.reduxState.scheduleReducer.map((conflictItem) => {
-                            return (
+                    <ul>
+                        {this.props.reduxState.schedule.map(conflictItem => 
+                             
                                 <ConflictList key={conflictItem.id} conflictItem={conflictItem} />
-                            );
-                        })}
-                    </ul> */}
+                            
+                        )}
+                        
+                    </ul>
                 </div>
             </div>
         )
@@ -95,10 +96,10 @@ class SchedulePage extends Component {
 
 
 // reduxState is our entire store
-const mapStateToProps = (reduxState) => {
+const mapStateToProps = (reduxState) => ({
     // this will make ALL reducers available on this.props.reduxState
-    return { reduxState }
-}
+    reduxState 
+})
 
 
 // this allows us to use <App /> in index.js

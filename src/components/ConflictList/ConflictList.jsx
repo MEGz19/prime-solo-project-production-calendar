@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import moment from 'moment';
+
 
 class ConflictList extends Component {
     // removeItem = () => {
@@ -18,10 +20,13 @@ class ConflictList extends Component {
     
     render() {
         return (
-            <li>
-                <span>{this.props.conflictItem.conflict}</span>
-                {/* <button onClick={this.removeItem}>Delete</button> */}
-            </li>
+        <>
+            <li>{moment(this.props.conflictItem.date).format("LLLL")}</li> 
+            {/* <li>{this.props.conflictItem.startTime}</li> */}
+            
+            
+            {/* <button onClick={this.removeItem}>Delete</button> */}
+        </>    
         )
     }
 }
