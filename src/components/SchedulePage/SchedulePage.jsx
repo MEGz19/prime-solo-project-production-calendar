@@ -1,32 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DatePicker from "react-datepicker";
-
+import ConflictList from "../ConflictList/ConflictList"
 
 
 // Material UI Imports
-import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import PropTypes from 'prop-types';
+// import { withStyles } from '@material-ui/core/styles';
+// import TextField from '@material-ui/core/TextField';
+// import PropTypes from 'prop-types';
 
 
 class SchedulePage extends Component {
-    // Part of Mat. UI functionality
-    // DatePickers(props) {
-    //     const { classes } = props;
-    //     DatePickers.propTypes = {
-    //         classes: PropTypes.object.isRequired,
-    //       }; //END MAT UI.
-    // START REACT-DATEPICKER
-    // state = {
-    //     startDate: new Date()
-    // };
-    // handleChange = date => {
-    //     this.setState({
-    //         startDate: date
-    //     });
-    // }; //END REACT DATEPICKER
-
     // Set up Local State
     state = {
         newConflict: {
@@ -55,7 +39,7 @@ class SchedulePage extends Component {
         // start the POST route for conflicts
         this.props.dispatch({
             type: 'ADD_CONFLICT_BY_ID',
-            payload: this.state.newConflict 
+            payload: this.state.newConflict
         })
     }
 
@@ -91,36 +75,16 @@ class SchedulePage extends Component {
                 <div>
                     <button onClick={this.handleClick}>Add Conflict</button>
                 </div>
-
-
-
-
-
-                {/* <div> */}
-                {/* REACT DATEPICKER START */}
-                {/* <DatePicker
-                    selected={this.state.startDate}
-                    onChange={this.handleChange}
-                /> */}
-                {/* REACT DATEPICKER END */}
-
-                {/* MATERIAL UI START */}
-                {/* <div>
-                    <form className={classes.container} noValidate>
-                        <TextField
-                            id="date"
-                            label="Birthday"
-                            type="date"
-                            defaultValue="2017-05-24"
-                            className={classes.textField}
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                        />
-                    </form>
-                    );
-                </div> */}
-                {/* END MATERIAL UI */}
+                {/* RENDER CONFICTS FROM SCHEDULE REDUCER TO DOM */}
+                <div>
+                    {/* <ul>
+                        {this.props.reduxState.scheduleReducer.map((conflictItem) => {
+                            return (
+                                <ConflictList key={conflictItem.id} conflictItem={conflictItem} />
+                            );
+                        })}
+                    </ul> */}
+                </div>
             </div>
         )
     }
