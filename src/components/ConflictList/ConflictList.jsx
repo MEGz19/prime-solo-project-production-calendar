@@ -5,6 +5,11 @@ import moment from 'moment';
 
 
 class ConflictList extends Component {
+    componentDidMount () {
+        this.props.dispatch({type: 'GET_CONFLICT'})
+      }
+
+
     // removeItem = () => {
     //     axios({
     //         method: 'DELETE',
@@ -21,8 +26,10 @@ class ConflictList extends Component {
     render() {
         return (
         <>
-            <li>{moment(this.props.conflictItem.date).format("LLLL")}</li> 
-            {/* <li>{this.props.conflictItem.startTime}</li> */}
+            <li>{moment(this.props.conflictItem.date).format("LL")}</li> 
+            <li>{this.props.conflictItem.start_time}</li>
+            <li>{this.props.conflictItem.end_time} </li>
+            <li>{this.props.conflictItem.description}</li>
             
             
             {/* <button onClick={this.removeItem}>Delete</button> */}
