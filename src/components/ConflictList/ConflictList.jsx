@@ -26,11 +26,7 @@ class ConflictList extends Component {
     render() {
         return (
         <>
-            <li>{moment(this.props.conflictItem.date).format("LL")}</li> 
-            <li>{this.props.conflictItem.start_time}</li>
-            <li>{this.props.conflictItem.end_time} </li>
-            <li>{this.props.conflictItem.description}</li>
-            
+            <li>{moment(this.props.conflictItem.date).format("LL")} {this.props.conflictItem.start_time} to {this.props.conflictItem.end_time} {this.props.conflictItem.description}</li> 
             
             {/* <button onClick={this.removeItem}>Delete</button> */}
         </>    

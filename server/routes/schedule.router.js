@@ -40,4 +40,18 @@ router.post('/', (req, res) => {
     })
 });
 
+// DELETE conflict from database list with a matching id
+router.delete('/:id', (req, res) => {
+    let reqId = req.params.id;
+    console.log('Delete request for conflict id', reqId);
+    let queryText = `DELETE FROM "conflicts" WHERE id = $1;`
+    pool.query(queryText, [reqId]).then(result => {
+        console.log('Conflict deleted');
+        res.sendStatus(200);
+    }).catch(err => {
+        console.log(`Error making database DELETE query ${queryText}`, error);
+        res.sendStatus(500);
+    })
+})
+
 module.exports = router;
