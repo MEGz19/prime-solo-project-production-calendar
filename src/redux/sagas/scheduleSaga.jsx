@@ -9,7 +9,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 
 
-// worker Saga: will be fired on "GET_CONFLICT_BY_ID" actions
 function* scheduleConflict(action) {
   console.log('adding conflict on POST', action.payload)
   //add it
@@ -54,11 +53,23 @@ function* deleteConflict(action) {
   }
 }
 
+//PUT/UPDATE request
+function* updateConflict(action) {
+  try {
+    let id = action.payload;
+    yield axios.put(`/api/schedule/${id}`);
+    yield put({ type: 'GET_CONFLICT'});
+  } catch (err) {
+    alert('error in PUT/UPDATE conflict', err);
+  }
+}
 
+// Watcher saga - waits for sagas to be called
 function* scheduleSaga() {
   yield takeLatest('ADD_CONFLICT_BY_ID', scheduleConflict);
   yield takeLatest('GET_CONFLICT', getConflict);
   yield takeLatest('DELETE_CONFLICT', deleteConflict);
+  yield takeLatest('UPDATE_CONFLICT', updateConflict);
 }
 
 export default scheduleSaga;

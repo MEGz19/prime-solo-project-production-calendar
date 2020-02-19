@@ -11,6 +11,11 @@ import ConflictList from "../ConflictList/ConflictList"
 
 
 class SchedulePage extends Component {
+    componentDidMount () {
+        this.props.dispatch({type: 'GET_CONFLICT'})
+      }
+
+
     // Set up Local State
     state = {
         newConflict: {
@@ -48,7 +53,7 @@ class SchedulePage extends Component {
             <div>
                 <div>
                     <h1>Schedule Page</h1>
-                    {JSON.stringify(this.state)}
+                    {/* {JSON.stringify(this.state)} */}
                     <p>The rehearsal period for <i>Wicked</i> will be from May 1 to May 28, 2020. Performances will be from May 29 through June 14, 2020. Please enter any conflicts, or times you are <b>NOT</b> available during this time frame.</p>
                 </div>
                 {/* DATE INPUT  */}

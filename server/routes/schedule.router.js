@@ -54,4 +54,21 @@ router.delete('/:id', (req, res) => {
     })
 })
 
+// PUT/UPDATE conflict from database list with matching id
+router.put('/:id', (req, res) => {
+    let reqId = req.params.id;
+    // COME BACK TO IT!!!! MAKE A VARIABLE FOR THE USER INFORMATION THAT'S BEING INSERTED/UPDATED
+    console.log('Update/Put request to update conflict id', reqId);
+    let queryText = `UPDATE  "conflicts"
+    SET date = $1, start_time = $2, end_time = $3, description = $4
+    WHERE id = $5
+    `
+    pool.query(queryText, [reqId]).then(result => {
+        res.sendStatus(200);
+    }).catch(err => {
+        console.log(`Error making PUT/UPDATE query ${queryText}`, error);
+        res.sendStatus(500);
+    })
+})
+
 module.exports = router;
