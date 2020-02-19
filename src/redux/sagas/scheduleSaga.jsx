@@ -18,6 +18,7 @@ function* scheduleConflict(action) {
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     };
+    //POST request
     let response = yield axios.post('/api/schedule', action.payload, config)
     //then do another GET
     yield put({ type: 'GET_CONFLICT' })
@@ -39,6 +40,19 @@ function* getConflict(action) {
     alert('error in GET conflict', err)
   }
 } 
+
+// DELETE request
+function* deleteConflict(action) {
+  try {
+    console.log(action.payload);
+    let id = action.payload;
+    let response = yield axios.delete(`/api/schedule/${id}`);
+    yield put({ type: 'GET_CONFLICT'})
+    console.log(response.data);
+  } catch (err) {
+    alert('error in DELETE conflict', err)
+  }
+}
 
 
 function* scheduleSaga() {

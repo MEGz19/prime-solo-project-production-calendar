@@ -13,7 +13,7 @@ class ConflictList extends Component {
     // removeItem = () => {
     //     axios({
     //         method: 'DELETE',
-    //         url: `/fruit/${this.props.basketItem.id}`
+    //         url: `/fruit/${this.props.conflictItem.id}`
     //     }).then((response) => {
     //         this.getFruit();
     //     }).catch((error) => {
