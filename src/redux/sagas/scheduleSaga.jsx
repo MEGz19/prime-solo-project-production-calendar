@@ -58,6 +58,7 @@ function* deleteConflict(action) {
 function* scheduleSaga() {
   yield takeLatest('ADD_CONFLICT_BY_ID', scheduleConflict);
   yield takeLatest('GET_CONFLICT', getConflict);
+  yield takeLatest('DELETE_CONFLICT', deleteConflict);
 }
 
 export default scheduleSaga;

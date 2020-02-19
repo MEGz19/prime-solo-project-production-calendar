@@ -6,7 +6,7 @@ const router = express.Router();
 //GET info from "conflicts" table in database
 router.get('/', (req, res) => {
     let id = [req.user.id]
-    let queryText = `SELECT "conflicts".date, "conflicts".start_time, "conflicts".end_time, "conflicts".description, "conflicts".user_id
+    let queryText = `SELECT "conflicts".id, "conflicts".date, "conflicts".start_time, "conflicts".end_time, "conflicts".description, "conflicts".user_id
         FROM "conflicts"
         WHERE "conflicts".user_id = $1
     `
