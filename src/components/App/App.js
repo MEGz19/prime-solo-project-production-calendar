@@ -16,8 +16,10 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
-import SchedulePage from '../SchedulePage/SchedulePage'
-import ConflictList from '../ConflictList/ConflictList'
+import SchedulePage from '../SchedulePage/SchedulePage';
+import ConflictList from '../ConflictList/ConflictList';
+import EditPopup from '../EditPopup/EditPopup';
+
 
 import './App.css';
 

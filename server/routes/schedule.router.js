@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 //GET info from "conflicts" table in database
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
     let id = [req.user.id]
     let queryText = `SELECT "conflicts".id, "conflicts".date, "conflicts".start_time, "conflicts".end_time, "conflicts".description, "conflicts".user_id
         FROM "conflicts"
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 });
 
 // POST to the database, conflicts table
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     console.log('test');
     console.log(req.body);
     console.log(req.user);
@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
 });
 
 // DELETE conflict from database list with a matching id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
     let reqId = req.params.id;
     console.log('Delete request for conflict id', reqId);
     let queryText = `DELETE FROM "conflicts" WHERE id = $1;`
@@ -55,7 +55,7 @@ router.delete('/:id', (req, res) => {
 })
 
 // PUT/UPDATE conflict from database list with matching id
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
     let reqId = req.params.id;
     // COME BACK TO IT!!!! MAKE A VARIABLE FOR THE USER INFORMATION THAT'S BEING INSERTED/UPDATED
     console.log('Update/Put request to update conflict id', reqId);
