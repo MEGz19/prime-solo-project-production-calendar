@@ -15,6 +15,7 @@ class ConflictList extends Component {
 
     //PUT route (update conflict by id)
     editConflictItem = () => {
+        console.log('clicked Edit button;')
         this.props.dispatch({
             type: 'UPDATE_CONFLICT',
             payload: this.props.conflictItem.id
