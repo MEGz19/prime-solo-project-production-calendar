@@ -1,6 +1,8 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
 
 
 //GET info from "conflicts" table in database
@@ -56,14 +58,15 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 
 // PUT/UPDATE conflict from database list with matching id
 router.put('/:id', rejectUnauthenticated, (req, res) => {
-    let reqId = req.params.id;
+    // let reqId = req.params.id;
     // COME BACK TO IT!!!! MAKE A VARIABLE FOR THE USER INFORMATION THAT'S BEING INSERTED/UPDATED
-    console.log('Update/Put request to update conflict id', reqId);
+    console.log('Update/Put request to update conflict id', req.params);
+    console.log(req.body);
     let queryText = `UPDATE  "conflicts"
     SET date = $1, start_time = $2, end_time = $3, description = $4
     WHERE id = $5
     `
-    pool.query(queryText, [reqId]).then(result => {
+    pool.query(queryText, [req.body.date, req.body.startTime, req.body.endTime, req.body.description, req.params.id]).then(result => {
         res.sendStatus(200);
     }).catch(err => {
         console.log(`Error making PUT/UPDATE query ${queryText}`, error);

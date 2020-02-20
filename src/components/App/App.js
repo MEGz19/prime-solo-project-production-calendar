@@ -18,7 +18,6 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import SchedulePage from '../SchedulePage/SchedulePage';
 import ConflictList from '../ConflictList/ConflictList';
-import EditPopup from '../EditPopup/EditPopup';
 
 
 import './App.css';

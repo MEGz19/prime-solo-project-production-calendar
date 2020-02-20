@@ -1,4 +1,3 @@
-// Provider allows us to use redux within our react app
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
@@ -56,8 +55,9 @@ function* deleteConflict(action) {
 //PUT/UPDATE request
 function* updateConflict(action) {
   try {
-    let id = action.payload;
-    yield axios.put(`/api/schedule/${id}`);
+    let id = action.payload.id;
+    let conflictUpdate = action.payload.conflictUpdate;
+    yield axios.put(`/api/schedule/${id}`, conflictUpdate);
     yield put({ type: 'GET_CONFLICT'});
   } catch (err) {
     alert('error in PUT/UPDATE conflict', err);
