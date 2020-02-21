@@ -37,6 +37,14 @@ const Nav = (props) => (
           </Link>
         </>
       )}
+      {/* Show the link to the admin page if the user is logged in and has admin access */}
+      {props.user.id && props.user.isAdmin && (
+        <>
+          <Link className="nav-link" to="/admin">
+            Admin Page
+          </Link>
+        </>
+      )}
     </div>
   </div>
 );
