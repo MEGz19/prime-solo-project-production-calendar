@@ -104,6 +104,7 @@ class RegisterPage extends Component {
             <label htmlFor="password">
               <TextField
                 required
+                type="password"
                 id="password"
                 label="password"
                 margin="dense"

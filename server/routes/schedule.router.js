@@ -58,8 +58,6 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 
 // PUT/UPDATE conflict from database list with matching id
 router.put('/:id', rejectUnauthenticated, (req, res) => {
-    // let reqId = req.params.id;
-    // COME BACK TO IT!!!! MAKE A VARIABLE FOR THE USER INFORMATION THAT'S BEING INSERTED/UPDATED
     console.log('Update/Put request to update conflict id', req.params);
     console.log(req.body);
     let queryText = `UPDATE  "conflicts"
