@@ -12,8 +12,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         FROM "conflicts"
         WHERE "conflicts".user_id = $1
     `
-    // FIX THE WHERE PART OF ABOVE SQL QUERY
-    pool.query(queryText, id).then(result => {
+        pool.query(queryText, id).then(result => {
         res.send(result.rows)
     }).catch(err => {
         console.log('Error in server GET:', err);
