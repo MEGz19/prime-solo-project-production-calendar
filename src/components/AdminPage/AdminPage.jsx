@@ -20,8 +20,8 @@ class AdminPage extends Component {
                 <div>
                     {/* RENDER ALL CONFLICTS TO DOM */}
                     <ul>
-                        {this.props.reduxState.schedule.map(conflictItem => 
-                             
+                        {this.props.reduxState.admin.map(conflictItem => 
+                            
                              <ConflictList key={conflictItem.id} conflictItem={conflictItem} />
                         )}    
                     </ul>

@@ -93,7 +93,7 @@ class ConflictList extends Component {
             effect="fadeInUp"
             onClickAway={this.closeModal} 
             >
-            {JSON.stringify(this.state)}
+            {/* {JSON.stringify(this.state)} */}
             {/* DATE INPUT  */}
             <div>
                     <label>Date:</label>
