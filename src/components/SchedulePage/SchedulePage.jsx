@@ -38,7 +38,7 @@ class SchedulePage extends Component {
         })
     }
 
-    // Dispatches local state to a saga on click of Add Conflict Button
+    // Dispatches local state to a saga on click of Add Conflict Button 
     handleClick = () => {
         console.log('clicked add conflict button');
         // start the POST route for conflicts
