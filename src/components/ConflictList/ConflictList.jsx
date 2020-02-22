@@ -48,10 +48,14 @@ class ConflictList extends Component {
 
     deleteConflictItem = () => {
         console.log(this.props.conflictItem);
-        this.props.dispatch({
-            type: 'DELETE_CONFLICT',
-            payload: this.props.conflictItem.id
-        })
+        //pop confirmation
+        let popup = window.confirm(`Are you sure you want to delete this information?`);
+        if (popup === true) {
+            this.props.dispatch({
+                type: 'DELETE_CONFLICT',
+                payload: this.props.conflictItem.id
+            })
+        }
     }
     // THIS WILL OPEN THE EDIT POPUP (MODAL)
     editConflictItem = () => {
@@ -75,52 +79,55 @@ class ConflictList extends Component {
         });
     }
 
-    
+
     render() {
         return (
-        <>
-            <li>{moment(this.props.conflictItem.date).format("LL")} {this.props.conflictItem.start_time} to {this.props.conflictItem.end_time} {this.props.conflictItem.description}</li> 
-            
-            <button onClick={this.deleteConflictItem}>Delete</button>
-            <button onClick={this.editConflictItem}>Edit</button>
-            
-            {/* THE MODAL IS A POPUP THAT CONTAINS EDIT FUNCTIONALITY */}
+            <>
+                <li>{moment(this.props.conflictItem.date).format("LL")} {this.props.conflictItem.start_time} to {this.props.conflictItem.end_time} {this.props.conflictItem.description}</li>
 
-            <Modal
-            visible={this.state.visible}   
-            width="440" // Sets width of popup
-            height="500" // Sets height of popup
-            effect="fadeInUp"
-            onClickAway={this.closeModal} 
-            >
-            {/* {JSON.stringify(this.state)} */}
-            {/* DATE INPUT  */}
-            <div>
-                    <label>Date:</label>
-                    <input onChange={(event) => this.handleChange(event, 'date')} type="date" id="date" name="date" />
-                </div>
-                {/* START TIME INPUT  */}
-                <div>
-                    <label>Start Time:</label>
-                    <input onChange={(event) => this.handleChange(event, 'startTime')} type="time" id="startTime" name="startTime" />
-                </div>
-                {/* END TIME INPUT  */}
-                <div>
-                    <label>End Time:</label>
-                    <input onChange={(event) => this.handleChange(event, 'endTime')} type="time" id="endTime" name="endTime" />
-                </div>
-                {/* DESCRIPTION TEXT BOX */}
-                <div>
-                    <label>Description:</label>
-                    <textarea onChange={(event) => this.handleChange(event, 'description')} placeholder="Anything we should know?"></textarea>
-                </div>
-                {/* ADD CONFLICT BUTTON */}
-                <div>
-                    <button onClick={this.handleSave}>Save</button>
-                </div>
+                <button onClick={this.deleteConflictItem}>Delete</button>
+                <button onClick={this.editConflictItem}>Edit</button>
 
-            </Modal>
-        </>    
+                {/* THE MODAL IS A POPUP THAT CONTAINS EDIT FUNCTIONALITY */}
+
+                <Modal
+                    visible={this.state.visible}
+                    width="200" // Sets width of popup
+                    height="300" // Sets height of popup
+                    effect="fadeInUp"
+                    onClickAway={this.closeModal}
+                >
+                    {/* {JSON.stringify(this.state)} */}
+                    {/* DATE INPUT  */}
+                    <div id="modal-container">
+                        <center>
+                            <div>
+                                <label>Date:</label>
+                                <input onChange={(event) => this.handleChange(event, 'date')} type="date" id="date" name="date" />
+                            </div>
+                            {/* START TIME INPUT  */}
+                            <div>
+                                <label>Start Time:</label>
+                                <input onChange={(event) => this.handleChange(event, 'startTime')} type="time" id="startTime" name="startTime" />
+                            </div>
+                            {/* END TIME INPUT  */}
+                            <div>
+                                <label>End Time:</label>
+                                <input onChange={(event) => this.handleChange(event, 'endTime')} type="time" id="endTime" name="endTime" />
+                            </div>
+                            {/* DESCRIPTION TEXT BOX */}
+                            <div>
+                                <label>Description:</label>
+                                <textarea onChange={(event) => this.handleChange(event, 'description')} placeholder="Anything we should know?"></textarea>
+                            </div>
+                            {/* ADD CONFLICT BUTTON */}
+                            <div>
+                                <button onClick={this.handleSave}>Save</button>
+                            </div>
+                        </center>
+                    </div>
+                </Modal>
+            </>
         )
     }
 }
