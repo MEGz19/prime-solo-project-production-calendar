@@ -48,7 +48,17 @@ input {
     cursor: pointer;
 }
 
-#modal-container {
+/* #modal-container {
     margin: 20px;
-
 }
+
+.main-container {
+    width: 80%;
+    height: 80%;
+    padding: 50px;
+    background-color: #ffffff;
+}
+
+#app-background-color {
+    background-color: #1b5e20;
+} */

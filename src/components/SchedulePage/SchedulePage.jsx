@@ -11,9 +11,9 @@ import ConflictList from "../ConflictList/ConflictList"
 
 
 class SchedulePage extends Component {
-    componentDidMount () {
-        this.props.dispatch({type: 'GET_CONFLICT'})
-      }
+    componentDidMount() {
+        this.props.dispatch({ type: 'GET_CONFLICT' })
+    }
 
 
     // Set up Local State
@@ -50,48 +50,48 @@ class SchedulePage extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <h1>Schedule Page</h1>
-                    {/* {JSON.stringify(this.state)} */}
-                    <p>The rehearsal period for <i>Wicked</i> will be from May 1 to May 28, 2020. Performances will be from May 29 through June 14, 2020. Please enter any conflicts, or times you are <b>NOT</b> available during this time frame.</p>
-                </div>
-                {/* DATE INPUT  */}
-                <div>
-                    <label>Date:</label>
-                    <input onChange={(event) => this.handleChange(event, 'date')} type="date" id="date" name="date" />
-                </div>
-                {/* START TIME INPUT  */}
-                <div>
-                    <label>Start Time:</label>
-                    <input onChange={(event) => this.handleChange(event, 'startTime')} type="time" id="startTime" name="startTime" />
-                </div>
-                {/* END TIME INPUT  */}
-                <div>
-                    <label>End Time:</label>
-                    <input onChange={(event) => this.handleChange(event, 'endTime')} type="time" id="endTime" name="endTime" />
-                </div>
-                {/* DESCRIPTION TEXT BOX */}
-                <div>
-                    <label>Description:</label>
-                    <textarea onChange={(event) => this.handleChange(event, 'description')} placeholder="Anything we should know?"></textarea>
-                </div>
-                {/* ADD CONFLICT BUTTON */}
-                <div>
-                    <button onClick={this.handleClick}>Add Conflict</button>
-                </div>
-                {/* RENDER CONFLICTS FROM SCHEDULE REDUCER TO DOM */}
-                <div>
-                    <ul>
-                        {this.props.reduxState.schedule.map(conflictItem => 
-                             
+                <div className="main-container">
+                    <div>
+                        <h1>Schedule Page</h1>
+                        {/* {JSON.stringify(this.state)} */}
+                        <p>The rehearsal period for <i>Wicked</i> will be from May 1 to May 28, 2020. Performances will be from May 29 through June 14, 2020. Please enter any conflicts, or times you are <b>NOT</b> available during this time frame.</p>
+                    </div>
+                    {/* DATE INPUT  */}
+                    <div>
+                        <label>Date:</label>
+                        <input onChange={(event) => this.handleChange(event, 'date')} type="date" id="date" name="date" />
+                    </div>
+                    {/* START TIME INPUT  */}
+                    <div>
+                        <label>Start Time:</label>
+                        <input onChange={(event) => this.handleChange(event, 'startTime')} type="time" id="startTime" name="startTime" />
+                    </div>
+                    {/* END TIME INPUT  */}
+                    <div>
+                        <label>End Time:</label>
+                        <input onChange={(event) => this.handleChange(event, 'endTime')} type="time" id="endTime" name="endTime" />
+                    </div>
+                    {/* DESCRIPTION TEXT BOX */}
+                    <div>
+                        <label>Description:</label>
+                        <textarea onChange={(event) => this.handleChange(event, 'description')} placeholder="Anything we should know?"></textarea>
+                    </div>
+                    {/* ADD CONFLICT BUTTON */}
+                    <div>
+                        <button onClick={this.handleClick}>Add Conflict</button>
+                    </div>
+                    {/* RENDER CONFLICTS FROM SCHEDULE REDUCER TO DOM */}
+                    <div>
+                        <ul>
+                            {this.props.reduxState.schedule.map(conflictItem =>
+
                                 <ConflictList key={conflictItem.id} conflictItem={conflictItem} />
-                            
-                        )}
-                        
-                    </ul>
+
+                            )}
+
+                        </ul>
+                    </div>
                 </div>
-            </div>
         )
     }
 }
@@ -103,7 +103,7 @@ class SchedulePage extends Component {
 // reduxState is our entire store
 const mapStateToProps = (reduxState) => ({
     // this will make ALL reducers available on this.props.reduxState
-    reduxState 
+    reduxState
 })
 
 
