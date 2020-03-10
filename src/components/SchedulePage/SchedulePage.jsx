@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import DatePicker from "react-datepicker";
 import ConflictList from "../ConflictList/ConflictList"
 
+//Bootstrap Imort
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+
 
 // Material UI Imports
 // import { withStyles } from '@material-ui/core/styles';
@@ -50,7 +54,7 @@ class SchedulePage extends Component {
 
     render() {
         return (
-                <div className="main-container">
+                <div className="schedule-page-div">
                     <div>
                         <h1>Schedule Page</h1>
                         {/* {JSON.stringify(this.state)} */}
@@ -78,7 +82,7 @@ class SchedulePage extends Component {
                     </div>
                     {/* ADD CONFLICT BUTTON */}
                     <div>
-                        <button onClick={this.handleClick}>Add Conflict</button>
+                        <button className="button" onClick={this.handleClick}>Add Conflict</button>
                     </div>
                     {/* RENDER CONFLICTS FROM SCHEDULE REDUCER TO DOM */}
                     <div>

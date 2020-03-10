@@ -13,7 +13,7 @@ class AdminPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="admin-page-div">
                 <div>
                     <h1>Administrator Page</h1>
                 </div> 

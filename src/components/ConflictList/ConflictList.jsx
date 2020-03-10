@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import Modal from 'react-awesome-modal';
 
+import Button from 'react-bootstrap/Button';
 
 
 class ConflictList extends Component {
@@ -85,8 +86,13 @@ class ConflictList extends Component {
             <>
                 <li>{moment(this.props.conflictItem.date).format("LL")} {this.props.conflictItem.start_time} to {this.props.conflictItem.end_time} {this.props.conflictItem.description}</li>
 
-                <button onClick={this.deleteConflictItem}>Delete</button>
-                <button onClick={this.editConflictItem}>Edit</button>
+                <button className="button" onClick={this.deleteConflictItem}>Delete</button>
+                <button className="button" onClick={this.editConflictItem}>Edit</button>
+
+                {/* BOOTSTRAP STYLING */}
+                {/* <Button variant="primary" size="sm" onClick={this.deleteConflictItem}>Delete</Button>
+                <Button variant="primary" size="sm" onClick={this.editConflictItem}>Edit</Button> */}
+                {/* END BOOTSTRAP STYLING */}
 
                 {/* THE MODAL IS A POPUP THAT CONTAINS EDIT FUNCTIONALITY */}
 
@@ -120,9 +126,9 @@ class ConflictList extends Component {
                                 <label>Description:</label>
                                 <textarea onChange={(event) => this.handleChange(event, 'description')} placeholder="Anything we should know?"></textarea>
                             </div>
-                            {/* ADD CONFLICT BUTTON */}
+                            {/* SAVE CONFLICT BUTTON */}
                             <div>
-                                <button onClick={this.handleSave}>Save</button>
+                                <button className="button" onClick={this.handleSave}>Save</button>
                             </div>
                         </center>
                     </div>
