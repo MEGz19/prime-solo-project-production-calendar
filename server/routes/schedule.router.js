@@ -65,7 +65,7 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     `
     pool.query(queryText, [req.body.date, req.body.startTime, req.body.endTime, req.body.description, req.params.id]).then(result => {
         res.sendStatus(200);
-    }).catch(err => {
+    }).catch(error => {
         console.log(`Error making PUT/UPDATE query ${queryText}`, error);
         res.sendStatus(500);
     })
