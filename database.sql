@@ -23,3 +23,13 @@ CREATE TABLE "contact_info" (
 "zipCode" INT,
 "user_id" INT REFERENCES "user"
 );
+
+--Conflicts Table
+CREATE TABLE "conflicts" (
+"id" SERIAL PRIMARY KEY,
+"date" DATE,
+"start_time" TIME,
+"end_time" TIME,
+"description" VARCHAR(1000),
+"user_id" INT REFERENCES "user"
+);
